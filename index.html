@@ -19,12 +19,14 @@
   <input type="text" id="forwardthrow" name="forwardthrow"><br><br>
   <label for="lname">Helicopter Speed (KNOTS):</label>
   <input type="text" id="stolspeed" name="stolspeed"><br><br>
-  <input type="submit" value="Calculate Delay" onclick = "doMath();">
+  <input type="submit" value="Calculate Delay" onclick = "calcDelay();">
+
+  <input type="submit" value="Calculate Ten Digit Grid" onclick = "calcTenDig();">
 </form>
 
 <script>
 
-    function doMath() {
+    function calcDelay() {
         var dropHeading = document.getElementById('dropheading').value * Math.PI/180;
         var mewHeading = document.getElementById('mewheading').value * Math.PI/180;
         var driftDist = document.getElementById('drift').value;
@@ -33,6 +35,48 @@
 
         var theProduct = ((Math.cos(dropHeading - mewHeading) * driftDist) - forwardThrow)/Math.ceil(stolSpeed*0.51);
         document.write(theProduct + " seconds of delay");
+
+
+}
+    function calcTenDig() {
+        var dropHeading = document.getElementById('dropheading').value;
+        var mewHeading = document.getElementById('mewheading').value;
+        var driftDist = document.getElementById('drift').value;
+        var forwardThrow = document.getElementById('forwardthrow').value;
+        var stolSpeed = document.getElementById('stolspeed').value;
+
+
+        // Back Azimuth && Calculating Angle Between North and Mew Heading
+        if(mewHeading > 180){
+          var backAzimuth = mewHeading - 180;
+          var innerAngle = 360 - mewHeading;
+        } else if (mewHeading < 180){
+          var backAzimuth = mewHeading + 180;
+          var innerAngle = mewHeading;
+        } else {
+          var backAzimuth = 360;
+          var innerAngle = 0;
+        }
+
+
+        // Calculating change in X
+        var xVal = 0;
+        var yVal = 0;
+        if (innerAngle > 180){
+          xVal = -Math.abs(Math.sin(innerAngle) * driftDist);
+        } else {
+          xVal = Math.abs(Math.sin(innerAngle) * driftDist);
+        }
+        // Change in Y
+        if(innerAngle < 90 || innerAngle > 270){
+          yVal = Math.abs(Math.cos(innerAngle) * driftDist);
+        } else {
+          yVal = -Math.abs(Math.cos(innerAngle) * driftDist);
+        }
+
+
+        var theProduct = ((Math.cos(dropHeading - mewHeading) * driftDist) - forwardThrow)/Math.ceil(stolSpeed*0.51);
+        document.write("Add to easting:" + xVal + " Add to northing:" + yVal + " For Ten Digit Grid of Transition Point");
 
 
 }
