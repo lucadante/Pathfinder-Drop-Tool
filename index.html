@@ -62,13 +62,13 @@
         // Calculating change in X
         var xVal = 0;
         var yVal = 0;
-        if (innerAngle > 180){
+        if (innerAngle < 180){
           xVal = -Math.abs(Math.sin(innerAngle) * driftDist);
         } else {
           xVal = Math.abs(Math.sin(innerAngle) * driftDist);
         }
         // Change in Y
-        if(innerAngle < 90 || innerAngle > 270){
+        if(innerAngle > 90 || innerAngle < 270){
           yVal = Math.abs(Math.cos(innerAngle) * driftDist);
         } else {
           yVal = -Math.abs(Math.cos(innerAngle) * driftDist);
