@@ -25,8 +25,8 @@
 <script>
 
     function doMath() {
-        var dropHeading = document.getElementById('dropheading').value;
-        var mewHeading = document.getElementById('mewheading').value;
+        var dropHeading = document.getElementById('dropheading').value * Math.PI/180;
+        var mewHeading = document.getElementById('mewheading').value * Math.PI/180;
         var driftDist = document.getElementById('drift').value;
         var forwardThrow = document.getElementById('forwardthrow').value;
         var stolSpeed = document.getElementById('stolspeed').value;
