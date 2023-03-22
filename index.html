@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
 <form action="/action_page.php">
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"><br><br>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"><br><br>
-  <input type="submit" value="Submit">
+  <label for="fname">Drop Heading:</label>
+  <input type="text" id="dropheading" name="dropheading"><br><br>
+  <label for="lname">Mew Heading:</label>
+  <input type="text" id="mewheading" name="mewheading"><br><br>
+  <label for="lname">Drift (DKAV):</label>
+  <input type="text" id="drift" name="drift"><br><br>
+  <label for="lname">Forward Throw:</label>
+  <input type="text" id="forwardthrow" name="forwardthrow"><br><br>
+  <label for="lname">Helicopter Speed (KNOTS):</label>
+  <input type="text" id="stolspeed" name="stolspeed"><br><br>
+  <input type="submit" value="Calculate Delay" onclick = "doMath();">
 </form>
+
+<script>
+
+    function doMath() {
+        var dropHeading = document.getElementById('dropheading').value;
+        var mewHeading = document.getElementById('mewheading').value;
+        var driftDist = document.getElementById('drift').value;
+        var forwardThrow = document.getElementById('forwardthrow').value;
+        var stolSpeed = document.getElementById('stolspeed').value;
+
+        var theProduct = Math.cos(parseInt(dropHeading) * parseInt(mewHeading);)  document.write(theProduct);
+
+
+}
+</script>
 <body>
 	<h1> Pathfinder Tool Beta Version 1.0 </h1>
+  <b> Delay Calculator </b>
 
 
 </body>
