@@ -70,15 +70,15 @@
         var xVal = 0;
         var yVal = 0;
         if (innerAngleMew < 180){
-          xVal = -Math.abs(Math.sin(innerAngleMew *180/Math.PI) * driftDist);
+          xVal = -Math.abs(Math.sin(innerAngleMew * (180/Math.PI)) * driftDist);
         } else {
-          xVal = Math.abs(Math.sin(innerAngleMew*180/Math.PI)) * driftDist);
+          xVal = Math.abs(Math.sin(innerAngleMew * (180/Math.PI)) * driftDist);
         }
         // Change in Y
         if(innerAngleMew > 90 && innerAngleMew < 270){
-          yVal = Math.abs(Math.cos(innerAngleMew*180/Math.PI)) * driftDist);
+          yVal = Math.abs(Math.cos(innerAngleMew*(180/Math.PI)) * driftDist);
         } else {
-          yVal = -Math.abs(Math.cos(innerAngleMew*180/Math.PI)) * driftDist);
+          yVal = -Math.abs(Math.cos(innerAngleMew*(180/Math.PI)) * driftDist);
         }
 /*
         // RELEASE Point
