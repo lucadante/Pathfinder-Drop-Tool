@@ -3,7 +3,7 @@
 
 <body>
 	<h1> Pathfinder Tool Beta Version 1.0 </h1>
-  <b> Delay Calculator TEST_03 </b>
+  <b> Delay Calculator TEST_04 </b>
 
 
 </body>
@@ -70,15 +70,15 @@
         var xVal = 0;
         var yVal = 0;
         if (innerAngleMew < 180){
-          xVal = -Math.abs(Math.sin(innerAngleMew * (180/Math.PI)) * driftDist);
+          xVal = -Math.abs(Math.sin(innerAngleMew * (Math.PI/180)) * driftDist);
         } else {
-          xVal = Math.abs(Math.sin(innerAngleMew * (180/Math.PI)) * driftDist);
+          xVal = Math.abs(Math.sin(innerAngleMew * (Math.PI/180)) * driftDist);
         }
         // Change in Y
         if(innerAngleMew > 90 && innerAngleMew < 270){
-          yVal = Math.abs(Math.cos(innerAngleMew*(180/Math.PI)) * driftDist);
+          yVal = Math.abs(Math.cos(innerAngleMew*(Math.PI/180)) * driftDist);
         } else {
-          yVal = -Math.abs(Math.cos(innerAngleMew*(180/Math.PI)) * driftDist);
+          yVal = -Math.abs(Math.cos(innerAngleMew*(Math.PI/180)) * driftDist);
         }
 /*
         // RELEASE Point
