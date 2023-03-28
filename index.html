@@ -3,7 +3,7 @@
 
 <body>
 	<h1> Pathfinder Tool Beta Version 1.0 </h1>
-  <b> Delay Calculator TEST_05 </b>
+  <b> Delay Calculator TEST_06 </b>
 
 
 </body>
@@ -55,13 +55,10 @@
           var innerAngleMew = 0;
         }
         if(dropHeading > 180){
-          var backAzimuth = (dropHeading - 180);
           var innerAngleDrop = 360 - dropHeading;
         } else if (dropHeading < 180){
-          var backAzimuth = (dropHeading + 180);
           var innerAngleDrop = dropHeading;
         } else {
-          var backAzimuth = 360;
           var innerAngleDrop = 0;
         }
 
@@ -80,20 +77,20 @@
         } else {
           yVal = -Math.abs(Math.cos(innerAngleMew*(Math.PI/180)) * driftDist);
         }
-/*
+
         // RELEASE Point
-        if (innerAngleMew < 180){
-          xVal = -Math.abs(Math.sin(innerAngleMew) * driftDist);
+        if (dropHeading < 180){
+          xVal += -Math.abs(Math.sin(innerAngleDrop * (Math.PI/180)) * forwardThrow);
         } else {
-          xVal = Math.abs(Math.sin(innerAngleMew) * driftDist);
+          xVal += Math.abs(Math.sin(innerAngleDrop * (Math.PI/180)) * forwardThrow);
         }
         // Change in Y
-        if(innerAngleMew > 90 && innerAngleMew < 270){
-          yVal = Math.abs(Math.cos(innerAngleMew) * driftDist);
+        if(dropHeading > 90 && dropHeading < 270){
+          yVal += Math.abs(Math.cos(innerAngleDrop * (Math.PI/180)) * forwardThrow);
         } else {
-          yVal = -Math.abs(Math.cos(innerAngleMew) * driftDist);
+          yVal += -Math.abs(Math.cos(innerAngleDrop * (Math.PI/180)) * forwardThrow);
         }
-*/
+
 
 
 
