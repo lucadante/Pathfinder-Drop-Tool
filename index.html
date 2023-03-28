@@ -2,8 +2,11 @@
 <html>
 
 <body>
+  <canvas class="myCanvas">
+  <p>Add suitable fallback here.</p>
+</canvas>
 	<h1> Pathfinder Tool Beta Version 1.0 </h1>
-  <b> Delay Calculator TEST_06 </b>
+  <b> Delay Calculator TEST_07 </b>
 
 
 </body>
@@ -21,7 +24,9 @@
   <input type="text" id="stolspeed" name="stolspeed"><br><br>
   <input type="submit" value="Calculate Delay" onclick = "calcDelay();">
 
-  <input type="submit" value="Calculate Ten Digit Grid" onclick = "calcTenDig();">
+  <p id='root'></p>
+
+  <input type="submit" value="Calculate Ten Digit Grid" onclick = "document.getElementById('root').innerHTML = calcTenDig();">
 </form>
 
 <script>
@@ -91,12 +96,13 @@
           yVal += -Math.abs(Math.cos(innerAngleDrop * (Math.PI/180)) * forwardThrow);
         }
 
+        const values = [xVal, yVal];
+        return values;
 
 
 
-        document.write("Add/subtract easting:" + xVal + " Add/subtract northing:" + yVal + " For Ten Digit Grid of Transition Point..." /*+ "... Back Azimuth: " + backAzimuth*/);
 
-
+        //document.write("Add/subtract easting:" + xVal + " Add/subtract northing:" + yVal + " For Ten Digit Grid of Release Point..." /*+ "... Back Azimuth: " + backAzimuth*/);
 }
 </script>
 
