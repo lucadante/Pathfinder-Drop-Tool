@@ -48,34 +48,55 @@
 
         // Back Azimuth && Calculating Angle Between North and Mew Heading
         if(mewHeading > 180){
-          var backAzimuth = mewHeading - 180;
-          var innerAngle = 360 - mewHeading;
+          var innerAngleMew = 360 - mewHeading;
         } else if (mewHeading < 180){
-          var backAzimuth = mewHeading + 180;
-          var innerAngle = mewHeading;
+          var innerAngleMew = mewHeading;
+        } else {
+          var innerAngleMew = 0;
+        }
+        if(dropHeading > 180){
+          var backAzimuth = (dropHeading - 180);
+          var innerAngleDrop = 360 - dropHeading;
+        } else if (dropHeading < 180){
+          var backAzimuth = (dropHeading + 180);
+          var innerAngleDrop = dropHeading;
         } else {
           var backAzimuth = 360;
-          var innerAngle = 0;
+          var innerAngleDrop = 0;
         }
 
-
+        // TRANSITION POINT
         // Calculating change in X
         var xVal = 0;
         var yVal = 0;
-        if (innerAngle < 180){
-          xVal = -Math.abs(Math.sin(innerAngle) * driftDist);
+        if (innerAngleMew < 180){
+          xVal = -Math.abs(Math.sin(innerAngleMew *180/Math.PI) * driftDist);
         } else {
-          xVal = Math.abs(Math.sin(innerAngle) * driftDist);
+          xVal = Math.abs(Math.sin(innerAngleMew*180/Math.PI)) * driftDist);
         }
         // Change in Y
-        if(innerAngle > 90 && innerAngle < 270){
-          yVal = Math.abs(Math.cos(innerAngle) * driftDist);
+        if(innerAngleMew > 90 && innerAngleMew < 270){
+          yVal = Math.abs(Math.cos(innerAngleMew*180/Math.PI)) * driftDist);
         } else {
-          yVal = -Math.abs(Math.cos(innerAngle) * driftDist);
+          yVal = -Math.abs(Math.cos(innerAngleMew*180/Math.PI)) * driftDist);
         }
+/*
+        // RELEASE Point
+        if (innerAngleMew < 180){
+          xVal = -Math.abs(Math.sin(innerAngleMew) * driftDist);
+        } else {
+          xVal = Math.abs(Math.sin(innerAngleMew) * driftDist);
+        }
+        // Change in Y
+        if(innerAngleMew > 90 && innerAngleMew < 270){
+          yVal = Math.abs(Math.cos(innerAngleMew) * driftDist);
+        } else {
+          yVal = -Math.abs(Math.cos(innerAngleMew) * driftDist);
+        }
+*/
 
 
-        var theProduct = ((Math.cos(dropHeading - mewHeading) * driftDist) - forwardThrow)/Math.ceil(stolSpeed*0.51);
+
         document.write("Add/subtract easting:" + xVal + " Add/subtract northing:" + yVal + " For Ten Digit Grid of Transition Point" /*+ "... Back Azimuth: " + backAzimuth*/);
 
 
