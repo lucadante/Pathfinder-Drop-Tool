@@ -7,7 +7,7 @@
   <p>Add suitable fallback here.</p>
 </canvas>-->
 	<h1> Pathfinder Tool Beta Version 1.0 </h1>
-  <b> Delay Calculator TEST_01 </b>
+  <b> Delay Calculator TEST_02 </b>
 
 
 </body>
@@ -25,9 +25,11 @@
   <input type="text" id="stolspeed" name="stolspeed"><br><br>
   <input type="submit" value="Calculate Delay" onclick = "calcDelay();">
 
+
+
+
   <p id='root'>"Result"</p>
-  <!--<input type="submit" value="Calculate Ten Digit Grid" onclick = "document.getElementById('root').innerHTML = calcTenDig();">-->
-  <input type="submit" value="Calculate Ten Digit Grid">
+  <input type="submit" value="Calculate Ten Digit Grid" onclick = "document.getElementById('root').innerHTML = calcTenDig();">
 
 </form>
 
@@ -51,6 +53,10 @@
         var driftDist = document.getElementById('drift').value;
         var forwardThrow = document.getElementById('forwardthrow').value;
         var stolSpeed = document.getElementById('stolspeed').value;
+
+        // from stack overflow
+        form.addEventListener('submit', e => {
+          e.preventDefault();
 
 
         // Back Azimuth && Calculating Angle Between North and Mew Heading
@@ -98,8 +104,8 @@
           yVal += -Math.abs(Math.cos(innerAngleDrop * (Math.PI/180)) * forwardThrow);
         }
 
-        //const values = [xVal, yVal];
-        //return values;
+        const values = [xVal, yVal];
+        return values;
         //document.write("test");
 
 
